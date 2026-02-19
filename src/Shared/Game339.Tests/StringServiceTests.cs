@@ -17,10 +17,10 @@ public class StringServiceTests
     [TestCase("", "")]
     [TestCase("a", "a")]
     [TestCase("racecar", "racecar")]
-    public void ReverseWords_ReturnsExpectedString(string input, string expected)
+    public void Reverse_ReturnsExpectedString(string input, string expected)
     {
         // Act
-        var result = _svc.ReverseWords(input);
+        var result = _svc.Reverse(input);
 
         // Assert
         Assert.That(result, Is.EqualTo(expected));
@@ -31,5 +31,18 @@ public class StringServiceTests
     {
         // Act & Assert
         Assert.Throws<System.ArgumentNullException>(() => _svc.Reverse(null));
+    }
+    
+    [TestCase("", "")] // empty
+    [TestCase(" ", " ")] // whitespace-only
+    [TestCase("hello", "hello")] // single word
+    [TestCase("Hello World", "World Hello")] // standard usecase
+    [TestCase("The quick brown fox", "fox brown quick The")]
+    [TestCase(" hello world ", "world hello")] // trims spaces
+    [TestCase("a b c", "c b a")] // multiple spaces
+    public void ReverseWords_CommonCases(string input, string expected)
+    {
+        var actual = _svc.ReverseWords(input);
+        Assert.That(actual, Is.EqualTo(expected));
     }
 }
