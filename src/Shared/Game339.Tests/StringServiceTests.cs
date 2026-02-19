@@ -27,7 +27,7 @@ public class StringServiceTests
     }
 
     [Test]
-    public void Reverse_NullString_ThrowsArgumentNullException()
+    public void ReverseWords_NullString_ThrowsArgumentNullException()
     {
         // Act & Assert
         Assert.Throws<System.ArgumentNullException>(() => _svc.Reverse(null));
