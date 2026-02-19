@@ -17,10 +17,10 @@ public class StringServiceTests
     [TestCase("", "")]
     [TestCase("a", "a")]
     [TestCase("racecar", "racecar")]
-    public void Reverse_ReturnsExpectedString(string input, string expected)
+    public void ReverseWords_ReturnsExpectedString(string input, string expected)
     {
         // Act
-        var result = _svc.Reverse(input);
+        var result = _svc.ReverseWords(input);
 
         // Assert
         Assert.That(result, Is.EqualTo(expected));
